@@ -30,7 +30,7 @@ variable "enable_monitoring" {
 
 }
 
-resource "aws_instance" "ec2-demo_ec2" {
+resource "aws_instance" "demo_ec2" {
   ami = "ami-01a00762f46d584a1"
   # instance_type = "t3.micro"
   instance_type = var.instance_type
@@ -40,6 +40,12 @@ resource "aws_instance" "ec2-demo_ec2" {
   tags = {
     name = var.instance_name
   }
+}
+
+output "ec2_public_ip" {
+  description = "Public Ip of the ec2 instance"
+  value = aws_instance.demo_ec2.public_ip
+  #  
 }
 
 # resource "aws_iam_user" "demo_user" {
